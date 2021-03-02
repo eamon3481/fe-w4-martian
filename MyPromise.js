@@ -19,5 +19,5 @@ new MyPromise("hello")
   .then((v) => v + " world")
   .then((v) => v + " and crong")
   .then((v) => console.log(v));
-
+  
 console.log("end");
