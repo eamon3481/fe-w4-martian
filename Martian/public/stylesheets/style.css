@@ -1,8 +1,30 @@
 body {
-  padding: 50px;
+  padding: 50px 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
+}
+
+.turningPlate {
+  width: auto;
+  height: 80vh;
+}
+
+section {
+  display: flex;
+}
+
+.arrow {
+  position: absolute;
+  left: 410px;
+  top: 254px;
+  background-color: white;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
