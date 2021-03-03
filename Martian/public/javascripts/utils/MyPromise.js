@@ -1,8 +1,31 @@
+/*export default class MyPromise {
+  constructor(callback) {
+    callback(this.resolve.bind(this), this.reject.bind(this));
+    this.cbList = [];
+  }
+
+  resolve(input) {
+    console.log('resolve 호출')
+    this.cbList.reduce((acc, cur) => cur(acc), input)
+}
+
+reject(input) {
+    console.log('reject 호출')
+}
+
+then(cb) {
+    console.log(this.cbList.length)
+    this.cbList.push(cb)
+    return this;
+}
+}
+*/
+
 const PENDING = "pending";
 const RESOLVED = "resolved";
 const FULFILLED = "fulfilled";
 const REJECTED = "rejected";
-
+// from Neis
 export default class MyPromise {
   constructor(cb) {
     this.state = PENDING;
@@ -96,62 +119,3 @@ export default class MyPromise {
     return null;
   }
 }
-
-/*
-const testPromise = new MyPromise((res, rej) => {
-  res("안녕하신가.");
-});
-console.log(testPromise);
-testPromise
-  .then((value) => {
-    console.log(value);
-    return value + "?";
-  })
-  .then((v) => {
-    console.log(v);
-  });
-
-console.log("start")
-
- new MyPromise((resolve, reject) => {
-     setTimeout(() => {
-         resolve("hello");
-     }, 1000);
-})
-     .then((v) => v + ' world')
-     .then((v) => console.log(v + ' and crong'))
-
- console.log("end")
-*/
-
-const cb1 = () =>
-  new MyPromise((resolve, reject) => {
-    setTimeout(() => {
-      console.log("cb1 5초");
-      resolve("cb1");
-    }, 5000);
-  });
-
-const cb2 = (v) =>
-  new MyPromise((resolve, reject) => {
-    setTimeout(() => {
-      console.log(v + " -> cb2 10초");
-      resolve(v + " -> cb2");
-    }, 5000);
-  });
-
-const cb3 = (v) =>
-  new MyPromise((resolve, reject) => {
-    setTimeout(() => {
-      console.log(v + " -> cb3 8초");
-      resolve(v + " -> cb3");
-    }, 3000);
-  });
-
-const cb4 = (v) =>
-  setTimeout(() => {
-    console.log(v + " -> cb4");
-    return v + " -> cb4";
-  }, 2000);
-
-cb1().then(cb2).then(cb3).then(cb4);

@@ -34,7 +34,7 @@ section {
   align-items: center;
   justify-content: center;
 }
-.outgoing_messages{
+.receiving_outgoing_messages{
   width: 200px;
   height: 30px;
   border: 1px solid #dddddd;
