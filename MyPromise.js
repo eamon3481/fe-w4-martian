@@ -1,23 +1,41 @@
 class MyPromise {
-  constructor(initialStr) {
+  constructor(callback) {
+    callback(this.resolve.bind(this), this.reject.bind(this));
     this.cbList = [];
-
-    setTimeout(() => {
-      this.cbList.reduce((acc, func) => func(acc), initialStr);
-    }, 100);
   }
 
-  then(cb) {
-    this.cbList.push(cb);
-    return this;
-  }
+  resolve(input) {
+    console.log('resolve 호출')
+    this.cbList.reduce((acc, cur) => cur(acc), input)
 }
 
-console.log("start");
+reject(input) {
+    console.log('reject 호출')
+}
 
-new MyPromise("hello")
-  .then((v) => v + " world")
-  .then((v) => v + " and crong")
-  .then((v) => console.log(v));
-  
-console.log("end");
+then(cb) {
+    console.log(this.cbList.length)
+    this.cbList.push(cb)
+    return this;
+}
+}
+
+console.log("start")
+
+ new MyPromise((resolve, reject) => {
+     setTimeout(() => {
+         resolve("hello");
+     }, 1000);
+})
+     .then((v) => v + ' world')
+     .then((v) => console.log(v + ' and crong'))
+
+ console.log("end")
+
+
+const charToCode = (char) => char.charCodeAt(0).toString(16).toUpperCase();
+
+const codeTochar = (code) => String.fromCharCode('0x' + code);
+
+
+console.log(codeTochar(charToCode('J')));
