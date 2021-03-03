@@ -19,7 +19,7 @@ then(cb) {
     return this;
 }
 }
-
+/*
 console.log("start")
 
  new MyPromise((resolve, reject) => {
@@ -31,11 +31,24 @@ console.log("start")
      .then((v) => console.log(v + ' and crong'))
 
  console.log("end")
-
+*/
 
 const charToCode = (char) => char.charCodeAt(0).toString(16).toUpperCase();
 
 const codeTochar = (code) => String.fromCharCode('0x' + code);
 
+let str = "Hello";
 
-console.log(codeTochar(charToCode('J')));
+const getCode = (str) => str.split("").map(e => charToCode(e).split(",").map(e => e.split("")));
+
+
+console.log(code(str)[3][0][1]);
+
+const getOutgoingMessages = (input) => {
+    const message = input.value;
+
+}
+function printName()  {
+    const name = document.getElementById('name').value;
+    document.getElementById("result").innerText = name;
+  }
