@@ -5,26 +5,39 @@ const section = _.$("section");
 const outgoing = _.$(".outgoing", section);
 const input = _.$(".outgoing_str", outgoing);
 const arrow = _.$(".arrow", section);
-
-function delay(item, time, cb) {
-  return new Promise(function (resolve, reject) {
-    setTimeout(() => {
-      cb(item);
-      resolve();
-    }, time);
-  });
-}
-
-async function ForEachPromise(array, time, cb) {
-  for (let i = 0; i < array.length; i++) {
-    await delay(array[i], time, cb);
-  }
-  console.log("Done");
-}
+const nums = _.$A(".code", section);
 
 const rotatingPlate = (code) => {
   let transition = arrow.style.transform.replace(/[a-z()]/g, "");
   arrow.style.transform = `rotate(${code}deg)`;
+};
+
+const codeSplit = (nums) => {
+  nums.forEach((v) => v.classList.add("font"));
+  new Promise((resolve) =>
+    setTimeout(() => {
+      nums.forEach((v) => v.classList.remove("font"));
+      resolve();
+    }, 1000)
+  );
+};
+
+const forEachPromise = (array) => {
+  const delay = () =>
+    new Promise((resolve) =>
+      setTimeout(() => {
+        resolve();
+      }, 4000)
+    );
+  (async () => {
+    for (let i = 0; i < array.length; i++) {
+      for (let element of array[i]) {
+        rotatingPlate(element);
+        const result = await delay();
+      }
+      await codeSplit(nums);
+    }
+  })();
 };
 
 const activeBtnEvent = new MyPromise((resolve, reject) => {
@@ -36,9 +49,7 @@ const activeBtnEvent = new MyPromise((resolve, reject) => {
 });
 
 const ForEachData = (codes) => {
-  const test = ["20", "30", "110"];
-  ForEachPromise(test, 3000, rotatingPlate);
-  //ForEachPromise(codes, 0, (code) => ForEachPromise(code, 3000, (c)=> rotatingPlate(c)));
+  forEachPromise(codes);
 };
 
 const ParseCode = (codes) => {

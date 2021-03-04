@@ -34,9 +34,9 @@ section {
   align-items: center;
   justify-content: center;
   transform: rotate(0deg);
-  transition-duration: 2s
+  transition-duration: 2s;
 }
-.receiving_outgoing_messages{
+.receiving_outgoing_messages {
   width: 200px;
   height: 30px;
   border: 1px solid #dddddd;
@@ -116,4 +116,8 @@ section {
 #_F {
   left: 221px;
   top: 52px;
+}
+
+.font {
+  color: crimson;
 }
