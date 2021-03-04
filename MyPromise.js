@@ -2,7 +2,7 @@ const PENDING = "pending";
 const RESOLVED = "resolved";
 const FULFILLED = "fulfilled";
 const REJECTED = "rejected";
-
+// from Neis
 export default class MyPromise {
   constructor(cb) {
     this.state = PENDING;

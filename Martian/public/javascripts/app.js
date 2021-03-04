@@ -38,19 +38,20 @@ const MakeCodeKey = (deg) => {
   });
   return codeKey;
 };
-const rotatingPlate = (code) => {
-  const codekey = MakeCodeKey(11.25);
-  console.log(codekey[code]);
-  console.log(code);
+const rotatingPlate = (codekey, code) => {
+  
 };
 
 const ParseCode = (codes) => {
+  const codekey = MakeCodeKey(11.25);
+  let rotateList = [];
   codes.forEach((code) => {
-    code.forEach((c) => c.forEach((e) => rotatingPlate(e)));
+    code.forEach((c) => rotateList.push(c.map((code) => codekey[code])));
   });
+  return rotateList;
 };
 
 
 activeBtnEvent //
-  .then((v) => getCode(v)) //
-  .then((v) => ParseCode(v));
+  .then(getCode) //
+  .then(ParseCode);
