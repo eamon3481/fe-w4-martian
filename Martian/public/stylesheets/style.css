@@ -33,6 +33,8 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
+  transform: rotate(0deg);
+  transition-duration: 2s
 }
 .receiving_outgoing_messages{
   width: 200px;

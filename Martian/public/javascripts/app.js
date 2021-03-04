@@ -1,9 +1,31 @@
 import _ from "./utils/utils.js";
 import MyPromise from "./utils/MyPromise.js";
-import { getCode } from "./ASCcode.js";
+import { getCode, MakeCodeKey } from "./ASCcode.js";
 const section = _.$("section");
 const outgoing = _.$(".outgoing", section);
 const input = _.$(".outgoing_str", outgoing);
+const arrow = _.$(".arrow", section);
+
+function delay(item, time, cb) {
+  return new Promise(function (resolve, reject) {
+    setTimeout(() => {
+      cb(item);
+      resolve();
+    }, time);
+  });
+}
+
+async function ForEachPromise(array, time, cb) {
+  for (let i = 0; i < array.length; i++) {
+    await delay(array[i], time, cb);
+  }
+  console.log("Done");
+}
+
+const rotatingPlate = (code) => {
+  let transition = arrow.style.transform.replace(/[a-z()]/g, "");
+  arrow.style.transform = `rotate(${code}deg)`;
+};
 
 const activeBtnEvent = new MyPromise((resolve, reject) => {
   _.on(outgoing, "click", ({ target }) => {
@@ -13,33 +35,10 @@ const activeBtnEvent = new MyPromise((resolve, reject) => {
   });
 });
 
-const MakeCodeKey = (deg) => {
-  const codeKey = {};
-  const keys = [
-    "0",
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-  ];
-  keys.forEach((key, i) => {
-    codeKey[key] = deg * (2 * i + 1);
-  });
-  return codeKey;
-};
-const rotatingPlate = (codekey, code) => {
-  
+const ForEachData = (codes) => {
+  const test = ["20", "30", "110"];
+  ForEachPromise(test, 3000, rotatingPlate);
+  //ForEachPromise(codes, 0, (code) => ForEachPromise(code, 3000, (c)=> rotatingPlate(c)));
 };
 
 const ParseCode = (codes) => {
@@ -51,7 +50,7 @@ const ParseCode = (codes) => {
   return rotateList;
 };
 
-
 activeBtnEvent //
   .then(getCode) //
-  .then(ParseCode);
+  .then(ParseCode)
+  .then(ForEachData);
