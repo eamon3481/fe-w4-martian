@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script src="https://kit.fontawesome.com/91ca50d103.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <section>
+    <div class="turningPlate">
+      <div id="_0" class="code">0</div>
+      <div id="_1" class="code">1</div>
+      <div id="_2" class="code">2</div>
+      <div id="_3" class="code">3</div>
+      <div id="_4" class="code">4</div>
+      <div id="_5" class="code">5</div>
+      <div id="_6" class="code">6</div>
+      <div id="_7" class="code">7</div>
+      <div id="_8" class="code">8</div>
+      <div id="_9" class="code">9</div>
+      <div id="_F" class="code">F</div>
+      <div id="_A" class="code">A</div>
+      <div id="_B" class="code">B</div>
+      <div id="_C" class="code">C</div>
+      <div id="_D" class="code">D</div>
+      <div id="_E" class="code">E</div>
+      <div class="arrow"><i class="fas fa-arrow-up" style="font-size: 50px"></i></div>
+    </div>
+
+
+    <div>
+      <div><span>송수신 정보</span></div>
+      <div class="receiving_outgoing_messages"><span></span></div>
+      <button>해석하기</button>
+
+      <div><span>발신 정보 입력</span></div>
+      <div class="outgoing">
+        <input class="outgoing_str" type="text" placeholder="발신 정보 입력">
+        <button class="outgoing_btn">지구로 보내기</button>
+      </div>
+
+    </div>
+  </section>
+</body>
+<script type="module" src="./javascripts/app.js"></script>
+
+</html>
