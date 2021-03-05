@@ -1,15 +1,12 @@
 import _ from "./utils/utils.js";
+import dom from "./utils/DOMselecter.js";
 import MyPromise from "./utils/MyPromise.js";
 import { getCode, MakeCodeKey } from "./ASCcode.js";
-const section = _.$("section");
-const outgoing = _.$(".outgoing", section);
-const input = _.$(".outgoing_str", outgoing);
-const arrow = _.$(".arrow", section);
-const nums = _.$A(".code", section);
+
 
 const rotatingPlate = (code) => {
   let transition = arrow.style.transform.replace(/[a-z()]/g, "");
-  arrow.style.transform = `rotate(${code}deg)`;
+  dom.arrow.style.transform = `rotate(${code}deg)`;
 };
 
 const codeSplit = (nums) => {
@@ -21,36 +18,35 @@ const codeSplit = (nums) => {
     }, 1000)
   );
 };
+const delay = (time) =>
+new Promise((resolve) =>
+  setTimeout(() => {
+    resolve();
+  }, time)
+);
 
 const forEachPromise = (array) => {
-  const delay = () =>
-    new Promise((resolve) =>
-      setTimeout(() => {
-        resolve();
-      }, 4000)
-    );
+ 
   (async () => {
     for (let i = 0; i < array.length; i++) {
       for (let element of array[i]) {
         rotatingPlate(element);
-        const result = await delay();
+        const result = await delay(4000);
       }
-      await codeSplit(nums);
+        this.then(codeSplit(dom.nums));
     }
   })();
 };
 
 const activeBtnEvent = new MyPromise((resolve, reject) => {
-  _.on(outgoing, "click", ({ target }) => {
+  _.on(dom.outgoing, "click", ({ target }) => {
     if (target.className === "outgoing_btn" && input.value) {
       resolve(input.value);
     }
   });
 });
 
-const ForEachData = (codes) => {
-  forEachPromise(codes);
-};
+const ForEachData = (codes) => forEachPromise(codes);
 
 const ParseCode = (codes) => {
   const codekey = MakeCodeKey(11.25);
@@ -60,6 +56,9 @@ const ParseCode = (codes) => {
   });
   return rotateList;
 };
+
+
+
 
 activeBtnEvent //
   .then(getCode) //
