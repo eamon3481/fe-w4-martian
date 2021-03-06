@@ -41,6 +41,10 @@ section {
   height: 30px;
   border: 1px solid #dddddd;
   border-radius: 5px;
+  padding: 7px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
 }
 .code {
   font-size: 27px;

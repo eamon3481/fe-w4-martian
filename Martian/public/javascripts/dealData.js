@@ -4,17 +4,30 @@ import { CodeKey } from "./ASCcode.js";
 const degToCode = (deg) =>
   Object.keys(CodeKey).find((key) => CodeKey[key] === deg);
 
-const Blink = (code) => {
+const codeFinish = () =>
+  new Promise((res) => {
+    dom.arrow.style.transform = `rotate(0deg)`;
+    res();
+  });
+
+const printCode = (code) => {
+  const currTEXT = dom.message.innerHTML;
+  dom.message.innerHTML = currTEXT + code;
+};
+
+const blinkNumber = (code) => {
   const DomNum = _.$(`#_${code}`);
   DomNum.classList.add("font");
-  const del = () =>
+  const delay = () =>
     new Promise((res) =>
       setTimeout(() => {
+        res(code);
         DomNum.classList.add("font");
-        res();
       }, 1000)
     );
-  return del().then(()=>(DomNum.classList.remove("font")));
+  return delay()
+    .then(printCode)
+    .then(() => DomNum.classList.remove("font"));
 };
 
 const rotatingPlate = (deg) => {
@@ -31,6 +44,8 @@ const ParseCode = (codes) => {
 
 const codeSplit = (nums) => {
   nums.forEach((v) => v.classList.add("font"));
+  const currTEXT = dom.message.innerHTML;
+  dom.message.innerHTML = currTEXT + " ";
   return _.delay(500);
 };
 
@@ -40,12 +55,13 @@ const forEachPromise = (array) => {
       for (let element of array[i]) {
         rotatingPlate(element);
         const result = await _.delay(2000);
-        await Blink(degToCode(element));
+        await blinkNumber(degToCode(element));
         await _.delay(1000);
       }
       await codeSplit(dom.nums);
       dom.nums.forEach((v) => v.classList.remove("font"));
     }
+    await codeFinish();
   })();
 };
 
