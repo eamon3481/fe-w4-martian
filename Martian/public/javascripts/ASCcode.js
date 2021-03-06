@@ -4,6 +4,7 @@ const codeToChar = (code) => String.fromCharCode("0x" + code);
 
 const getCode = (str) => str.split("").map((e) => charToCode(e).split(",").map((e) => e.split("")));
 
+
 const MakeCodeKey = (deg) => {
   const codeKey = {};
   const keys = [

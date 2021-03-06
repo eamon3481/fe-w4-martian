@@ -6,6 +6,7 @@ const DOM = {
   arrow: _.$(".arrow"),
   nums: _.$A(".code"),
   message: _.$(".message"),
+  btn: _.$(".btn")
 };
 
 export default DOM;

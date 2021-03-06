@@ -6,7 +6,10 @@ const degToCode = (deg) =>
 
 const codeFinish = () =>
   new Promise((res) => {
+    let currTEXT = dom.message.innerHTML;
+    dom.message.innerHTML = currTEXT.slice(0,-1)
     dom.arrow.style.transform = `rotate(0deg)`;
+    dom.btn.disabled = false;
     res();
   });
 
