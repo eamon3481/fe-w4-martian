@@ -4,7 +4,7 @@ import MyPromise from "./utils/MyPromise.js";
 import { ParseCode, ForEachData } from "./dealData.js";
 import { getCode } from "./ASCcode.js";
 
-const Blink = () => {};
+
 
 const activeBtnEvent = new MyPromise((resolve, reject) => {
   _.on(dom.outgoing, "click", ({ target }) => {

@@ -30,4 +30,8 @@ const MakeCodeKey = (deg) => {
   return codeKey;
 };
 
-export { codeToChar, charToCode, getCode, MakeCodeKey };
+
+const deg = 360 / 16;
+const CodeKey = MakeCodeKey(deg/2);
+
+export { codeToChar, charToCode, getCode, CodeKey };

@@ -1,17 +1,30 @@
 import _ from "./utils/utils.js";
 import dom from "./utils/DOMselecter.js";
-import { MakeCodeKey } from "./ASCcode.js";
-const rotatingPlate = (code) => {
-  let transition = dom.arrow.style.transform.replace(/[a-z()]/g, "");
-  dom.arrow.style.transform = `rotate(${code}deg)`;
+import { CodeKey } from "./ASCcode.js";
+const degToCode = (deg) =>
+  Object.keys(CodeKey).find((key) => CodeKey[key] === deg);
+
+const Blink = (code) => {
+  const DomNum = _.$(`#_${code}`);
+  DomNum.classList.add("font");
+  const del = () =>
+    new Promise((res) =>
+      setTimeout(() => {
+        DomNum.classList.add("font");
+        res();
+      }, 1000)
+    );
+  return del().then(()=>(DomNum.classList.remove("font")));
+};
+
+const rotatingPlate = (deg) => {
+  dom.arrow.style.transform = `rotate(${deg}deg)`;
 };
 
 const ParseCode = (codes) => {
-  const deg = 360 / 16;
-  const codekey = MakeCodeKey(deg / 2);
   let rotateList = [];
   codes.forEach((code) => {
-    code.forEach((c) => rotateList.push(c.map((code) => codekey[code])));
+    code.forEach((c) => rotateList.push(c.map((code) => CodeKey[code])));
   });
   return rotateList;
 };
@@ -26,7 +39,9 @@ const forEachPromise = (array) => {
     for (let i = 0; i < array.length; i++) {
       for (let element of array[i]) {
         rotatingPlate(element);
-        const result = await _.delay(4000);
+        const result = await _.delay(2000);
+        await Blink(degToCode(element));
+        await _.delay(1000);
       }
       await codeSplit(dom.nums);
       dom.nums.forEach((v) => v.classList.remove("font"));
