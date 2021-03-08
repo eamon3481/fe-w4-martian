@@ -125,3 +125,17 @@ section {
 .font {
   color: crimson;
 }
+
+.receiving_outgoing{
+  display: flex;
+  margin-bottom: 20px;
+}
+
+button{
+  margin-left: 10px;
+}
+
+span{
+  display: inline-block;
+  margin-bottom: 5px;
+}
