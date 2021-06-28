@@ -1,0 +1,141 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00b7ff;
+}
+
+.turningPlate {
+  background-image: url("https://lh6.googleusercontent.com/eVJM9UZqOXFDmDztevuUC-iXF_bphePcQQob9j31fokpXvgl_SYL_LQesGooVUXH-2DljNwzfziTZmvZocOs996SkN_yQ5O4wdAe9SzAdq5GAD7PZZKwLTfxqZ2Cu111vwAxFMOb7hg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 80vh;
+  height: 80vh;
+  display: block;
+  position: relative;
+}
+
+section {
+  display: flex;
+}
+
+.arrow {
+  position: absolute;
+  left: 213px;
+  top: 196px;
+  background-color: white;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(0deg);
+  transition-duration: 2s;
+}
+.receiving_outgoing_messages {
+  width: 200px;
+  height: 30px;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  padding: 7px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+.code {
+  font-size: 27px;
+  position: absolute;
+  font-weight: 800;
+  color: #4a47a3;
+}
+
+#_0 {
+  left: 287px;
+  top: 49px;
+}
+
+#_1 {
+  left: 348px;
+  top: 78px;
+}
+
+#_2 {
+  left: 408px;
+  top: 122px;
+}
+
+#_3 {
+  left: 434px;
+  top: 188px;
+}
+#_4 {
+  left: 433px;
+  top: 259px;
+}
+
+#_5 {
+  left: 408px;
+  top: 332px;
+}
+#_6 {
+  left: 358px;
+  top: 383px;
+}
+#_7 {
+  left: 291px;
+  top: 412px;
+}
+#_8 {
+  left: 212px;
+  top: 412px;
+}
+#_9 {
+  left: 152px;
+  top: 382px;
+}
+#_A {
+  left: 101px;
+  top: 332px;
+}
+#_B {
+  left: 68px;
+  top: 260px;
+}
+#_C {
+  left: 68px;
+  top: 183px;
+}
+#_D {
+  left: 100px;
+  top: 125px;
+}
+#_E {
+  left: 146px;
+  top: 77px;
+}
+#_F {
+  left: 221px;
+  top: 52px;
+}
+
+.font {
+  color: crimson;
+}
+
+.receiving_outgoing{
+  display: flex;
+  margin-bottom: 20px;
+}
+
+button{
+  margin-left: 10px;
+}
+
+span{
+  display: inline-block;
+  margin-bottom: 5px;
+}
